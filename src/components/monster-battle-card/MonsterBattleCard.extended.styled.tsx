@@ -10,9 +10,9 @@ import { colors } from '../../constants/colors';
 export const BattleMonsterCard = styled(Card, {
   shouldForwardProp: prop => prop !== 'centralized',
 })<{ centralized?: boolean }>(({ centralized }) => ({
-  padding: '13px 11px',
-  width: 'calc(307px - 22px)',
-  height: '415px',
+  padding: '11px 12px',
+  width: 'calc(307px - 20px)',
+  height: '393px',
   background: colors.white,
   boxShadow: '-2px 3px 10px rgba(0, 0, 0, 0.25)',
   borderRadius: '7px',
@@ -40,4 +40,31 @@ export const ProgressBar = styled(LinearProgress)(() => ({
     borderRadius: 15,
     backgroundColor: colors.progressColor,
   },
+}));
+
+export const Image = styled.img(() => ({
+  borderRadius: '7px',
+  width: '283px',
+  height: '178px',
+  boxShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.25)',
+}));
+
+export const BattleMonsterName = styled(Typography)(() => ({
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontSize: '22px',
+  color: colors.black,
+  paddingTop: '8px',
+  paddingBottom: '2px',
+  letterSpacing: '0px',
+  borderBottom: 'rgba(0, 0, 0, 0.1) 1px solid',
+}));
+
+export const BattleMonsterStat = styled(Typography)(() => ({
+  fontFamily: 'Roboto',
+  fontStyle: 'normal',
+  fontSize: '12px',
+  lineHeight: '20px',
+  color: colors.black,
+  paddingTop: '9px',
 }));

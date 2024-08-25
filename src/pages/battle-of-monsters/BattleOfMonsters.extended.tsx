@@ -39,7 +39,8 @@ const BattleOfMonsters = () => {
 
       <BattleSection>
         <MonsterBattleCard
-          title={selectedMonster?.name || 'Player'}></MonsterBattleCard>
+          title={'Player'}
+          monster={selectedMonster}></MonsterBattleCard>
         <StartBattleButton
           data-testid="start-battle-button"
           disabled={selectedMonster === null}
