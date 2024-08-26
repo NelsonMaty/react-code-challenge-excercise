@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useAppDispatch } from '../../app/hooks';
 import { Monster } from '../../models/interfaces/monster.interface';
 import { setSelectedMonster } from '../../reducers/monsters/monsters.actions';
+import { setRandomMonster } from '../../reducers/monsters/monsters.actions.extended';
 import {
   Image,
   ListTitle,
@@ -27,6 +28,7 @@ const MonstersList: React.FC<MonstersListProps> = ({ monsters }) => {
     const value = selectedMonsterId === monster.id ? null : monster.id;
     setSelectedMonsterId(value);
     dispatch(setSelectedMonster(!value ? null : monster));
+    dispatch(setRandomMonster(value, monsters));
   };
 
   return (
