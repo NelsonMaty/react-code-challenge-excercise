@@ -1,7 +1,12 @@
-import { createAction } from '@reduxjs/toolkit';
+import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { Battle, Players } from '../../models/interfaces/battle.interface';
 import { Monster } from '../../models/interfaces/monster.interface';
+import { MonsterServiceExtended } from './monsters.service.extended';
 
-export const fetchBattleWins = 'TODO';
+export const fetchBattleWins = createAsyncThunk<Battle, Players>(
+  'monsters/fetchBattleWins',
+  MonsterServiceExtended.battle,
+);
 
 export const setRandomMonster = createAction(
   'monsters/setRandomMonster',

@@ -4,14 +4,19 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../app/hooks';
 import { MonsterBattleCard } from '../../components/monster-battle-card/MonsterBattleCard.extended';
+import { WinnerDisplay } from '../../components/winner-display/WinnerDisplay.extended';
 import { MonstersList } from '../../components/monsters-list/MonstersList.extended';
 import { Title } from '../../components/title/Title';
 import { fetchMonstersData } from '../../reducers/monsters/monsters.actions';
+import { fetchBattleWins } from '../../reducers/monsters/monsters.actions.extended';
 import {
   selectMonsters,
   selectSelectedMonster,
 } from '../../reducers/monsters/monsters.selectors';
-import { selectRandomMonster } from '../../reducers/monsters/monsters.selectors.extended';
+import {
+  selectMonsterWinner,
+  selectRandomMonster,
+} from '../../reducers/monsters/monsters.selectors.extended';
 import {
   BattleSection,
   PageContainer,
@@ -24,6 +29,7 @@ const BattleOfMonsters = () => {
   const monsters = useSelector(selectMonsters);
   const selectedMonster = useSelector(selectSelectedMonster);
   const randomMonster = useSelector(selectRandomMonster);
+  const monsterWinner = useSelector(selectMonsterWinner);
 
   useEffect(() => {
     dispatch(fetchMonstersData());
@@ -31,6 +37,12 @@ const BattleOfMonsters = () => {
 
   const handleStartBattleClick = () => {
     // Fight!
+    dispatch(
+      fetchBattleWins({
+        monster1Id: selectedMonster?.id,
+        monster2Id: randomMonster?.id,
+      }),
+    );
   };
 
   return (
@@ -38,7 +50,7 @@ const BattleOfMonsters = () => {
       <Title>Battle of Monsters</Title>
 
       <MonstersList monsters={monsters} />
-
+      {monsterWinner && <WinnerDisplay text={monsterWinner?.winner.name} />}
       <BattleSection>
         <MonsterBattleCard
           title={'Player'}
