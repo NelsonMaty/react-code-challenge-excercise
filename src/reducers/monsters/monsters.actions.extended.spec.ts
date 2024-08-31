@@ -6,7 +6,7 @@ describe('setRandomMonster Action', () => {
   it('should return a random monster when selectedMonsterId is provided and valid monsters exist', () => {
     const action = setRandomMonster('monster-1', monstersData.monsters);
     expect(action.payload).toBeDefined();
-    expect(action.payload?.id).not.toBe('1'); // Ensure it's not the selected monster
+    expect(action.payload?.id).not.toBe('monster-1'); // Ensure it's not the selected monster
   });
 
   it('should return null when selectedMonsterId is null', () => {
