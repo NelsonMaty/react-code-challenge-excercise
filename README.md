@@ -16,9 +16,9 @@ I was given a partially functioning project and tasked with adding some features
 
 This project is designed for you to follow along easily. Here are the features I was asked to implement:
 
-Req #1: Implement a card layout. Add unit test.
-Req #2: Select a random computer player. Add unit test.
-Req #3: Calculate and display the winner. Add unit test.
+- Req #1: Implement a card layout. Add unit test.
+- Req #2: Select a random computer player. Add unit test.
+- Req #3: Calculate and display the winner. Add unit test.
 
 I’ve completed these tasks and created separate pull requests (PRs) for each feature and test, making it easier for you to review or compare with your own code.
 Here are the links to the PRs:
