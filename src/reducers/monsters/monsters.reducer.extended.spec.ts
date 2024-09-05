@@ -1,5 +1,5 @@
 import monstersData from '../../../data/monsters.json';
-import { setRandomMonster } from './monsters.actions.extended';
+import { fetchBattleWins, setRandomMonster } from './monsters.actions.extended';
 import { monstersReducerExtended } from './monsters.reducer.extended';
 
 describe('Monsters Reducer', () => {
@@ -8,11 +8,6 @@ describe('Monsters Reducer', () => {
       winner: null,
       selectRandomMonster: null,
     });
-  });
-
-  it('should change the battle on action fulfilled', () => {
-    // TODO
-    expect(1).toEqual(2);
   });
 
   it('should add the random monster to the state', () => {
@@ -25,7 +20,17 @@ describe('Monsters Reducer', () => {
   });
 
   it('should add the winner to the state', () => {
-    // TODO
-    expect(1).toEqual(2);
+    const action = {
+      type: fetchBattleWins.fulfilled,
+      payload: { winner: 'monster-1', tie: false },
+    };
+    const state = monstersReducerExtended(undefined, action);
+
+    expect(state.winner).toEqual(
+      expect.objectContaining({
+        winner: 'monster-1',
+        tie: false,
+      }),
+    );
   });
 });

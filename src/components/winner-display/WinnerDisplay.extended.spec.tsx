@@ -1,9 +1,14 @@
+import React from 'react';
 import '@testing-library/jest-dom';
 
-// TODO complete tests
+import { render, screen } from '@testing-library/react';
+import { WinnerDisplay } from './WinnerDisplay.extended';
+
 describe('WinnerDisplayExtended', () => {
   it('renders the winner text correctly', () => {
-    // TODO - complete the test
-    expect(1).toEqual(2);
+    render(<WinnerDisplay text="test" />);
+
+    const winnerText = screen.getByText('test wins!');
+    expect(winnerText).toBeInTheDocument();
   });
 });
